@@ -35,7 +35,12 @@ function calculateProfits() {
     let resultText = `<strong>Results:</strong><br>`;
     resultText += maxProfit !== "Unlimited" ? `Max Profit: $${maxProfit.toFixed(2)}<br>` : `Max Profit: Unlimited<br>`;
     resultText += maxLoss !== "Unlimited" ? `Max Loss: $${maxLoss.toFixed(2)}<br>` : `Max Loss: Unlimited<br>`;
-    resultText += `Break-Even Price: $${breakEven.toFixed(2)}<br>`;
+    if(optionType == 'long-call' || optionType == 'short-put'){
+        resultText += `Break-Even Price: at or above $${breakEven.toFixed(2)}<br>`;
+    }else{
+        resultText += `Break-Even Price: at or below $${breakEven.toFixed(2)}<br>`;
+    }
+    
     document.getElementById("result").innerHTML = resultText;
   }
   
